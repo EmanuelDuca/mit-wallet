@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
-import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
@@ -22,20 +21,20 @@ export default function TopBar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b">
-      <div className="flex h-14 lg:h-16 items-center px-6">
+      <div className="flex flex-row gap-4 h-14 items-center px-6 py-3">
         {/* Brand */}
         <Link
           href="/dashboard"
-          className="flex items-center gap-1.5 text-sm font-semibold shrink-0"
+          className="flex items-center gap-1.5 text-lg font-semibold hover:text-shadow-lg shrink-0"
         >
           MitWallet
         </Link>
 
         {/* Vertical divider */}
-        <Separator orientation="vertical" className="mx-4 hidden lg:block h-5" />
+        <div className="w-[1px] bg-foreground/20 h-5" />
 
         {/* Nav links — hidden on mobile */}
-        <nav className="hidden lg:flex items-center gap-0">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map(({ label, href }) => (
             <Link
               key={href}
@@ -46,7 +45,7 @@ export default function TopBar() {
                 "focus-visible:ring-[3px] focus-visible:ring-ring/50",
                 pathname === href
                   ? "bg-accent text-accent-foreground"
-                  : "text-muted-foreground"
+                  : "text-muted-foreground",
               )}
             >
               {label}
@@ -55,7 +54,7 @@ export default function TopBar() {
         </nav>
 
         {/* Right side */}
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-4">
           {/* Search */}
           <div className="relative hidden sm:block">
             <Search className="absolute left-2.5 top-2 w-4 h-4 text-muted-foreground" />
@@ -65,8 +64,7 @@ export default function TopBar() {
             />
           </div>
 
-          {/* Vertical divider */}
-          <Separator orientation="vertical" className="mx-1 hidden lg:block h-5" />
+          <div className="w-[1px] bg-foreground/20 h-5" />
 
           {/* Avatar */}
           <Avatar className="rounded-lg w-8 h-8">
